@@ -85,21 +85,21 @@ def plot_world_map(countries):
         fill_color="Greens",
     ).add_to(m)
 
-    m.save("files/output/map.html")
+    m.save("files/map.html")
 
 
 def make_worldmap():
     """Función principal"""
 
-    if not os.path.exists("files/output"):
-        os.makedirs("files/output")
+    if not os.path.exists("files"):
+        os.makedirs("files")
 
     affiliations = load_affiliations()
     affiliations = remove_na_rows(affiliations)
     affiliations = add_countries_column(affiliations)
     affiliations = clean_countries(affiliations)
     countries = count_country_frequency(affiliations)
-    countries.to_csv("files/output/countries.csv")
+    countries.to_csv("files/countries.csv")
     plot_world_map(countries)
 
 
